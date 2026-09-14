@@ -1,0 +1,26 @@
+{
+    "src/reducers/home.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/auth.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/common.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/settings.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/article.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/profile.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/articleList.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/editor.js": [
+        "../constants/actionTypes"
+    ]
+}
