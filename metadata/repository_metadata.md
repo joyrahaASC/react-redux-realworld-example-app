@@ -1,0 +1,38 @@
+# Repository Metadata Knowledge Base
+
+## `src`
+| File Path | Core Purpose |
+|-----------|--------------|
+| `src/agent.js` | Provides a centralized API client agent for the Conduit application, wrapping HTTP requests with authentication token management. Exposes organized service modules (Auth, Articles, Comments, Profile, Tags) that handle all backend communication for user authentication, article management, commenting, user profiles, and tag retrieval. |
+
+## `src/components`
+| File Path | Core Purpose |
+|-----------|--------------|
+| `src/components/App.js` | Serves as the root application component that manages routing, authentication state, and navigation for a React-based web application. Handles JWT token initialization, Redux state mapping, and conditional rendering of the Header component along with route-based page components. Orchestrates redirects and app loading lifecycle through Redux actions. |
+| `src/components/ArticleList.js` | Renders a list of articles with pagination support. Displays loading state when articles are unavailable, empty state when no articles exist, or iterates through articles rendering each with ArticlePreview component and includes ListPagination for navigation. |
+| `src/components/ArticlePreview.js` | Renders a preview card component for an article in a React application, displaying article metadata (author, date, favorites count) and content summary. Connects to Redux to dispatch favorite/unfavorite actions via the agent service, allowing users to toggle article favorite status. |
+| `src/components/Editor.js` | Implements a React-based article editor component that allows users to create or update articles with title, description, body, and tags. Connects to Redux store to manage editor state and dispatches actions for field updates, tag management, and article submission through the agent API service. |
+| `src/components/Header.js` | Defines a React navigation header component that conditionally renders different navigation menus based on user authentication state. Displays logged-out navigation (Home, Sign in, Sign up) for unauthenticated users and logged-in navigation (Home, New Post, Settings, Profile) for authenticated users with their profile image and username. |
+| `src/components/ListErrors.js` | Renders a list of error messages in a React component by iterating over an errors object prop and displaying each key-value pair as list items. Returns null if no errors are present. |
+| `src/components/ListPagination.js` | Implements a pagination component for article lists in a React application. Connects to Redux store to dispatch page change actions and conditionally fetches article data either through a custom pager function or the default agent Articles API. |
+
+## `src/components/Article`
+| File Path | Core Purpose |
+|-----------|--------------|
+| `src/components/Article/ArticleActions.js` | Provides article modification actions (edit and delete) for authenticated users in a React component. Conditionally renders edit and delete buttons based on user permissions, dispatching a DELETE_ARTICLE action through Redux when the delete button is clicked. |
+| `src/components/Article/ArticleMeta.js` | Renders article metadata including author information, profile image, creation date, and action buttons. Displays author username as a clickable link to their profile and formats the article creation timestamp. Delegates modification actions to the ArticleActions component based on user permissions. |
+| `src/components/Article/Comment.js` | Renders a single comment component displaying the comment body, author information with avatar and username, creation date, and a conditional delete button. Links author details to their profile page and manages visibility of the delete action based on current user authentication. |
+| `src/components/Article/CommentContainer.js` | Renders a comment section container for an article that conditionally displays either a comment input form for authenticated users or sign-in/sign-up links for guests. Always displays the list of existing comments regardless of authentication status. |
+| `src/components/Article/CommentInput.js` | Provides a React component for submitting comments on articles. Manages local comment body state, dispatches ADD_COMMENT actions via Redux, and calls the agent API to create comments with the article slug. |
+| `src/components/Article/CommentList.js` | Renders a list of comments by mapping over an array of comment objects and rendering each one using the Comment component. Passes down props including comment data, current user, and slug to each Comment instance. |
+| `src/components/Article/DeleteButton.js` | Provides a React component that renders a delete button for comments in an article view. Dispatches a DELETE_COMMENT action through Redux when clicked, calling the agent's Comments.delete API method with the article slug and comment ID. |
+| `src/components/Article/index.js` | Renders the article detail page component in a React application, displaying article content with markdown rendering, metadata, tags, and associated comments. Connects to Redux store to fetch article and comment data on mount using agent API calls, and manages component lifecycle with load/unload actions. |
+
+## `src/components/Home`
+| File Path | Core Purpose |
+|-----------|--------------|
+| `src/components/Home/Banner.js` | Renders a conditional banner component for the application homepage that displays the application name and tagline. The banner is hidden when a user authentication token is present, indicating a logged-in state. |
+| `src/components/Home/MainView.js` | Renders the main article feed view with tabbed navigation for 'Your Feed', 'Global Feed', and tag-filtered feeds. Connects to Redux store to manage article list state and dispatches tab change actions when users switch between feed types. |
+| `src/components/Home/Tags.js` | Renders a list of clickable tag elements for article filtering. When a tag is clicked, it triggers a callback to fetch articles filtered by that tag using the agent service. Displays a loading message when tags are not yet available. |
+| `src/components/Home/index.js` | Implements the Home page component for a React-based article feed application. Manages the display of articles, tags, and banner based on user authentication state, dispatching Redux actions to load feed data and handle tag filtering on mount and unmount lifecycle events. |
+
