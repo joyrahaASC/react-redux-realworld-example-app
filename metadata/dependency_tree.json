@@ -1,0 +1,83 @@
+{
+    "src/components/Article/CommentList.js": [
+        "./Comment"
+    ],
+    "src/components/Article/ArticleActions.js": [
+        "../../agent",
+        "../../constants/actionTypes"
+    ],
+    "src/components/Article/CommentContainer.js": [
+        "./CommentInput",
+        "./CommentList"
+    ],
+    "src/components/Article/DeleteButton.js": [
+        "../../agent",
+        "../../constants/actionTypes"
+    ],
+    "src/components/Article/CommentInput.js": [
+        "../../agent",
+        "../../constants/actionTypes"
+    ],
+    "src/components/Article/ArticleMeta.js": [
+        "./ArticleActions"
+    ],
+    "src/components/Article/index.js": [
+        "./ArticleMeta",
+        "./CommentContainer",
+        "../../agent",
+        "../../constants/actionTypes"
+    ],
+    "src/components/App.js": [
+        "../agent",
+        "./Header",
+        "../constants/actionTypes",
+        "../components/Article",
+        "../components/Editor",
+        "../components/Home",
+        "../components/Login",
+        "../components/Profile",
+        "../components/ProfileFavorites",
+        "../components/Register",
+        "../components/Settings",
+        "../store"
+    ],
+    "src/components/Article/Comment.js": [
+        "./DeleteButton"
+    ],
+    "src/agent.js": [],
+    "src/components/ArticleList.js": [
+        "./ArticlePreview",
+        "./ListPagination"
+    ],
+    "src/components/ArticlePreview.js": [
+        "../agent",
+        "../constants/actionTypes"
+    ],
+    "src/components/Header.js": [],
+    "src/components/Editor.js": [
+        "./ListErrors",
+        "../agent",
+        "../constants/actionTypes"
+    ],
+    "src/components/Home/MainView.js": [
+        "../ArticleList",
+        "../../agent",
+        "../../constants/actionTypes"
+    ],
+    "src/components/Home/index.js": [
+        "./Banner",
+        "./MainView",
+        "./Tags",
+        "../../agent",
+        "../../constants/actionTypes"
+    ],
+    "src/components/Home/Banner.js": [],
+    "src/components/Home/Tags.js": [
+        "../../agent"
+    ],
+    "src/components/ListErrors.js": [],
+    "src/components/ListPagination.js": [
+        "../agent",
+        "../constants/actionTypes"
+    ]
+}
