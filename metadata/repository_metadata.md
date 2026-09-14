@@ -4,6 +4,10 @@
 | File Path | Core Purpose |
 |-----------|--------------|
 | `src/agent.js` | Provides a centralized API client agent for the Conduit application, wrapping HTTP requests with authentication token management. Exposes organized service modules (Auth, Articles, Comments, Profile, Tags) that handle all backend communication for user authentication, article management, commenting, user profiles, and tag retrieval. |
+| `src/index.js` | Serves as the main application entry point that bootstraps a React application with Redux state management and client-side routing. Renders the root App component wrapped in Redux Provider and ConnectedRouter, mounting it to the DOM element with id 'root'. |
+| `src/middleware.js` | Implements Redux middleware for handling asynchronous actions with promise-based payloads and managing JWT token persistence in localStorage. Tracks view changes to prevent stale async updates and dispatches ASYNC_START/ASYNC_END actions around promise resolution. |
+| `src/reducer.js` | Serves as the root Redux store configuration by combining all application-level reducers into a single state tree. Aggregates domain-specific reducers for articles, authentication, editor, home, profile, settings, and routing to create the centralized application state management structure. |
+| `src/store.js` | Configures and initializes the Redux store for state management in a React application. Sets up middleware chain including routing, promise handling, local storage persistence, and conditional logging based on environment, then exports the configured store and browser history instance. |
 
 ## `src/components`
 | File Path | Core Purpose |
@@ -15,6 +19,11 @@
 | `src/components/Header.js` | Defines a React navigation header component that conditionally renders different navigation menus based on user authentication state. Displays logged-out navigation (Home, Sign in, Sign up) for unauthenticated users and logged-in navigation (Home, New Post, Settings, Profile) for authenticated users with their profile image and username. |
 | `src/components/ListErrors.js` | Renders a list of error messages in a React component by iterating over an errors object prop and displaying each key-value pair as list items. Returns null if no errors are present. |
 | `src/components/ListPagination.js` | Implements a pagination component for article lists in a React application. Connects to Redux store to dispatch page change actions and conditionally fetches article data either through a custom pager function or the default agent Articles API. |
+| `src/components/Login.js` | Implements a user login form component that manages authentication state through Redux. Handles email and password input changes, form submission via the agent service, and dispatches login actions with proper lifecycle cleanup on unmount. |
+| `src/components/Profile.js` | Implements a user profile page component that displays user information, articles, and follow/unfollow functionality. Connects to Redux store to manage profile state and dispatches actions for loading profile data, following/unfollowing users, and fetching articles by author. |
+| `src/components/ProfileFavorites.js` | Renders the profile favorites page component that displays a user's favorited articles. Extends the base Profile component to load and display articles favorited by a specific user, with navigation tabs to switch between user's own articles and favorited articles. |
+| `src/components/Register.js` | Implements a user registration form component that collects username, email, and password inputs. Connects to Redux store to manage authentication state and dispatches registration actions through the agent service. Handles form submission, field updates, and component lifecycle cleanup. |
+| `src/components/Settings.js` | Provides a user settings management page component that allows users to update their profile information (image, username, bio, email, password) and logout. Connects to Redux store to manage settings state and dispatches actions for saving user data and handling page lifecycle. |
 
 ## `src/components/Article`
 | File Path | Core Purpose |
@@ -35,4 +44,21 @@
 | `src/components/Home/MainView.js` | Renders the main article feed view with tabbed navigation for 'Your Feed', 'Global Feed', and tag-filtered feeds. Connects to Redux store to manage article list state and dispatches tab change actions when users switch between feed types. |
 | `src/components/Home/Tags.js` | Renders a list of clickable tag elements for article filtering. When a tag is clicked, it triggers a callback to fetch articles filtered by that tag using the agent service. Displays a loading message when tags are not yet available. |
 | `src/components/Home/index.js` | Implements the Home page component for a React-based article feed application. Manages the display of articles, tags, and banner based on user authentication state, dispatching Redux actions to load feed data and handle tag filtering on mount and unmount lifecycle events. |
+
+## `src/constants`
+| File Path | Core Purpose |
+|-----------|--------------|
+| `src/constants/actionTypes.js` | Defines a centralized collection of action type constants for a Redux-based state management system. These string constants represent all possible actions across the application including authentication, article management, profile operations, and UI state changes. |
+
+## `src/reducers`
+| File Path | Core Purpose |
+|-----------|--------------|
+| `src/reducers/article.js` | Implements a Redux reducer that manages article page state, including article details and comments. Handles loading/unloading article pages, adding new comments with error handling, and deleting comments by filtering the comments array. |
+| `src/reducers/articleList.js` | Redux reducer that manages article list state for home and profile pages. Handles article favoriting/unfavoriting, pagination, tag filtering, and tab switching by updating articles array and metadata based on dispatched action types. |
+| `src/reducers/auth.js` | Manages authentication state for login and register flows in a Redux reducer. Handles action types for login/register operations, page lifecycle events, async operation progress tracking, and dynamic field updates for authentication forms. |
+| `src/reducers/common.js` | Redux reducer managing global application state for a Conduit app, including authentication tokens, current user data, navigation redirects, and view change tracking. Handles state transitions for user authentication (login/register/logout), article operations (submit/delete), settings updates, and page lifecycle events. |
+| `src/reducers/editor.js` | Implements a Redux reducer for managing the article editor state in a React application. Handles editor page lifecycle, article submission, tag management, and field updates by responding to dispatched action types. |
+| `src/reducers/home.js` | Implements a Redux reducer that manages home page state by handling HOME_PAGE_LOADED and HOME_PAGE_UNLOADED actions. Stores tags data from the payload when the home page loads and resets state to an empty object when the page unloads. |
+| `src/reducers/profile.js` | Manages the profile state in a Redux reducer by handling profile page lifecycle events and user follow/unfollow actions. Updates the profile state based on dispatched actions including loading profile data, clearing state on page unload, and updating profile information when following or unfollowing users. |
+| `src/reducers/settings.js` | Manages the settings page state in a Redux reducer, handling settings save operations, page unload cleanup, and async operation progress tracking. Responds to three action types to update state with error handling and loading indicators. |
 
