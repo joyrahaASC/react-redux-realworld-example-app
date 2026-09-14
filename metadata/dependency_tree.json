@@ -79,5 +79,77 @@
     "src/components/ListPagination.js": [
         "../agent",
         "../constants/actionTypes"
+    ],
+    "src/reducer.js": [
+        "./reducers/article",
+        "./reducers/articleList",
+        "./reducers/auth",
+        "./reducers/common",
+        "./reducers/editor",
+        "./reducers/home",
+        "./reducers/profile",
+        "./reducers/settings"
+    ],
+    "src/index.js": [
+        "./store",
+        "./components/App"
+    ],
+    "src/components/Login.js": [
+        "./ListErrors",
+        "../agent",
+        "../constants/actionTypes"
+    ],
+    "src/components/Settings.js": [
+        "./ListErrors",
+        "../agent",
+        "../constants/actionTypes"
+    ],
+    "src/constants/actionTypes.js": [],
+    "src/middleware.js": [
+        "./agent",
+        "./constants/actionTypes"
+    ],
+    "src/components/ProfileFavorites.js": [
+        "./Profile",
+        "../agent",
+        "../constants/actionTypes"
+    ],
+    "src/reducers/article.js": [
+        "../constants/actionTypes"
+    ],
+    "src/components/Register.js": [
+        "./ListErrors",
+        "../agent",
+        "../constants/actionTypes"
+    ],
+    "src/components/Profile.js": [
+        "./ArticleList",
+        "../agent",
+        "../constants/actionTypes"
+    ],
+    "src/reducers/articleList.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/editor.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/common.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/auth.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/home.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/profile.js": [
+        "../constants/actionTypes"
+    ],
+    "src/reducers/settings.js": [
+        "../constants/actionTypes"
+    ],
+    "src/store.js": [
+        "./middleware",
+        "./reducer"
     ]
 }
